@@ -4,7 +4,7 @@ Password Generator is a web application that employees can use to generate a ran
 
 ## Password Generator Mockup
 <p align="center">
-  <img alt="Password Generator" src="https://github.com/caymanh/horiseon-webpage/blob/main/images/01-html-css-git-homework-demo.png">
+  <img alt="Password Generator" src="https://github.com/caymanh/password-generator/blob/main/image/password-generator-mockup.png">
 </p>
 
 ## URL
