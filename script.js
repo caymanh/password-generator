@@ -3,8 +3,9 @@ var generateBtn = document.querySelector("#generate");
 
 // Define ASCII Character Code Array
 
-var lowerCaseCharCode = charCodeArray(65, 90);
-var upperCaseCharCode = charCodeArray(97, 122);
+
+var lowerCaseCharCode = charCodeArray(97, 122);
+var upperCaseCharCode = charCodeArray(65, 90);
 var numericCharCode = charCodeArray(48, 57);
 var specialCharCode = charCodeArray(33, 47).concat(
   charCodeArray(58,64)
@@ -23,16 +24,16 @@ function writePassword() {
   //User prompts for password criteria. Create logic to only show next criteria if user inputs a valid option
 
   var lowerCasePrompt = prompt("Do you want the password to include lowercase character\(s)\? Answer 'yes' or 'no.'");
-  lowerCasePrompt = lowerCasePrompt.toLowerCase();
+  // lowerCasePrompt = lowerCasePrompt.toLowerCase();
   
   var upperCasePrompt = prompt("Do you want the password to include uppercase character\(s)\? Answer 'yes' or 'no.'");
-  upperCasePrompt = upperCasePrompt.toLowerCase();
+  // upperCasePrompt = upperCasePrompt.toLowerCase();
   
   var numericPrompt = prompt("Do you want the password to include numeric character\(s)\? Answer 'yes' or 'no.'");
-  numericPrompt = numericPrompt.toLowerCase();
+  // numericPrompt = numericPrompt.toLowerCase();
   
   var specialPrompt = prompt("Do you want the password to include special character\(s)\? Answer 'yes' or 'no.'");
-  specialPrompt = specialPrompt.toLowerCase();
+  // specialPrompt = specialPrompt.toLowerCase();
   
   var passwordLengthPrompt = prompt("Please choose a password length of at least 8 characters and no more than 128 characters.");
 
@@ -43,23 +44,23 @@ function writePassword() {
   } else if (passwordLengthPrompt < 8 || passwordLengthPrompt > 128) {
     alert("Please choose a length of at least 8 characters and no more than 128 characters. Click the 'Generate Password' button to start over again.")
   } else {
-    var password = generatePassword(passwordLengthPrompt, lowerCasePrompt, upperCasePrompt, numericPrompt, specialPrompt);
+    var password = generatePassword(lowerCasePrompt, upperCasePrompt, numericPrompt, specialPrompt, passwordLengthPrompt);
     var passwordText = document.querySelector("#password");
   
     passwordText.value = password;
   }
 };
 
-// Create function to generate password
+//Function to generate password
 
-function generatePassword(passwordLengthPrompt, lowerCasePrompt, upperCasePrompt, numericPrompt, specialPrompt) {
+function generatePassword(lowerCasePrompt, upperCasePrompt, numericPrompt, specialPrompt, passwordLengthPrompt) {
   var passcode = [];
   if (lowerCasePrompt === "yes") passcode = passcode.concat(lowerCaseCharCode);
   if (upperCasePrompt === "yes") passcode = passcode.concat(upperCaseCharCode);
   if (numericPrompt === "yes") passcode = passcode.concat(numericCharCode);
   if (specialPrompt === "yes") passcode = passcode.concat(specialCharCode);
 
-  var passcodeCharacters = []
+  var passcodeCharacters = [];
   for (var i = 0; i < passwordLengthPrompt; i++) {
     var characterCode = passcode[Math.floor(Math.random() * passcode.length)]
     passcodeCharacters.push(String.fromCharCode(characterCode))
