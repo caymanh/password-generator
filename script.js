@@ -3,7 +3,6 @@ var generateBtn = document.querySelector("#generate");
 
 // Define ASCII Character Code Array
 
-
 var lowerCaseCharCode = charCodeArray(97, 122);
 var upperCaseCharCode = charCodeArray(65, 90);
 var numericCharCode = charCodeArray(48, 57);
@@ -39,7 +38,7 @@ function writePassword() {
 
   // Validate user selected criteria. If no character type is selected or if character length is not between 8 and 128, user will be asked to start over.
 
-  if (lowerCasePrompt === "no" && upperCasePrompt === "no" && numericPrompt === "no") {
+  if (lowerCasePrompt === "no" && upperCasePrompt === "no" && numericPrompt === "no" && specialPrompt === "no") {
     alert("Please choose at least one character type. Click the 'Generate Password' button to start over again.")
   } else if (passwordLengthPrompt < 8 || passwordLengthPrompt > 128) {
     alert("Please choose a length of at least 8 characters and no more than 128 characters. Click the 'Generate Password' button to start over again.")
