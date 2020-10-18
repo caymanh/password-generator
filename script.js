@@ -26,6 +26,16 @@ var specialCharCode = charCodeArray(33, 47).concat(
   charCodeArray(123, 126)
 );
 
+// Create a function to loop through Character Code Array
+
+function charCodeArray(x, y) {
+  var array = []
+  for (var i = x; i <= y; i++) {
+    array.push(i)
+  }
+  return array
+};
+
 // User prompts for password criteria. Create logic to only show next criteria if user inputs a valid option
 
 var passwordLengthPrompt = prompt("Please choose a password length of at least 8 characters and no more than 128 characters.");
