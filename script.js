@@ -19,17 +19,23 @@ generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword(passwordLengthPrompt, upperCasePrompt, numericPrompt, specialPrompt);
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
+  if (lowerCasePrompt === "no" && upperCasePrompt === "no" && numericPrompt === "no") {
+    alert("Please choose at least one character type. Refresh the page and start over again.")
+  } else if (passwordLengthPrompt < 8 || passwordLengthPrompt > 128) {
+    alert("Please choose a length of at least 8 characters and no more than 128 characters. Refresh the page and start over again.")
+  } else {
+    var password = generatePassword(passwordLengthPrompt, lowerCasePrompt, upperCasePrompt, numericPrompt, specialPrompt);
+    var passwordText = document.querySelector("#password");
   
-}
+    passwordText.value = password;
+  }
+};
 
 // Create function to generate password
 
-function generatePassword(passwordLengthPrompt, upperCasePrompt, numericPrompt, specialPrompt) {
-  var passcode = lowerCaseCharCode;
+function generatePassword(passwordLengthPrompt, lowerCasePrompt, upperCasePrompt, numericPrompt, specialPrompt) {
+  var passcode = [];
+  if (lowerCasePrompt === "yes") passcode = passcode.concat(lowerCaseCharCode);
   if (upperCasePrompt === "yes") passcode = passcode.concat(upperCaseCharCode);
   if (numericPrompt === "yes") passcode = passcode.concat(numericCharCode);
   if (specialPrompt === "yes") passcode = passcode.concat(specialCharCode);
@@ -54,7 +60,7 @@ function charCodeArray(x, y) {
 
 // User prompts for password criteria. Create logic to only show next criteria if user inputs a valid option
 
-var passwordLengthPrompt = prompt("Please choose a password length of at least 8 characters and no more than 128 characters.");
+alert("Welcome to the Password Generator! You will be asked a series of questions to select your password criteria. Select 'Generate Password' when you have answered all questions.");
 
 var lowerCasePrompt = prompt("Do you want the password to include lowercase character\(s)\? Answer 'yes' or 'no.'");
 lowerCasePrompt = lowerCasePrompt.toLowerCase();
@@ -70,4 +76,6 @@ numericPrompt = numericPrompt.toLowerCase();
 
 var specialPrompt = prompt("Do you want the password to include special character\(s)\? Answer 'yes' or 'no.'");
 specialPrompt = specialPrompt.toLowerCase();
+
+var passwordLengthPrompt = prompt("Please choose a password length of at least 8 characters and no more than 128 characters.");
 
