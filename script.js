@@ -13,6 +13,18 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+// Define ASCII Character Code Array
+
+var lowerCaseCharCode = charCodeArray(65, 90);
+var upperCaseCharCode = charCodeArray(97, 122);
+var numericCharCode = charCodeArray(48, 57);
+var specialCharCode = charCodeArray(33, 47).concat(
+  charCodeArray(58,64)
+).concat(
+  charCodeArray(91,96)
+).concat(
+  charCodeArray(123, 126)
+);
 
 // User prompts for password criteria. Create logic to only show next criteria if user inputs a valid option
 
