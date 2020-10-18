@@ -1,18 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
 // Define ASCII Character Code Array
 
 var lowerCaseCharCode = charCodeArray(65, 90);
@@ -25,6 +13,34 @@ var specialCharCode = charCodeArray(33, 47).concat(
 ).concat(
   charCodeArray(123, 126)
 );
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword(passwordLengthPrompt, upperCasePrompt, numericPrompt, specialPrompt);
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+  
+}
+
+// Create function to generate password
+
+function generatePassword(passwordLengthPrompt, upperCasePrompt, numericPrompt, specialPrompt) {
+  var passcode = lowerCaseCharCode;
+  if (upperCasePrompt === "yes") passcode = passcode.concat(upperCaseCharCode);
+  if (numericPrompt === "yes") passcode = passcode.concat(numericCharCode);
+  if (specialPrompt === "yes") passcode = passcode.concat(specialCharCode);
+
+  var passcodeCharacters = []
+  for (var i = 0; i < passwordLengthPrompt; i++) {
+    var characterCode = passcode[Math.floor(Math.random() * passcode.length)]
+    passcodeCharacters.push(String.fromCharCode(characterCode))
+  }
+  return passcodeCharacters.join('')
+}
 
 // Create a function to loop through Character Code Array
 
