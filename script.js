@@ -23,16 +23,16 @@ function writePassword() {
   //User prompts for password criteria. Create logic to only show next criteria if user inputs a valid option
 
   var lowerCasePrompt = prompt("Do you want the password to include lowercase character\(s)\? Answer 'yes' or 'no.'");
-  // lowerCasePrompt = lowerCasePrompt.toLowerCase();
+  lowerCasePrompt = lowerCasePrompt.toLowerCase();
   
   var upperCasePrompt = prompt("Do you want the password to include uppercase character\(s)\? Answer 'yes' or 'no.'");
-  // upperCasePrompt = upperCasePrompt.toLowerCase();
+  upperCasePrompt = upperCasePrompt.toLowerCase();
   
   var numericPrompt = prompt("Do you want the password to include numeric character\(s)\? Answer 'yes' or 'no.'");
-  // numericPrompt = numericPrompt.toLowerCase();
+  numericPrompt = numericPrompt.toLowerCase();
   
   var specialPrompt = prompt("Do you want the password to include special character\(s)\? Answer 'yes' or 'no.'");
-  // specialPrompt = specialPrompt.toLowerCase();
+  specialPrompt = specialPrompt.toLowerCase();
   
   var passwordLengthPrompt = prompt("Please choose a password length of at least 8 characters and no more than 128 characters.");
 
