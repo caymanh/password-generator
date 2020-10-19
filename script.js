@@ -6,6 +6,7 @@ var generateBtn = document.querySelector("#generate");
 var lowerCaseCharCode = charCodeArray(97, 122);
 var upperCaseCharCode = charCodeArray(65, 90);
 var numericCharCode = charCodeArray(48, 57);
+// Concat is needed since special character codes are not in sequence in ASCII.
 var specialCharCode = charCodeArray(32, 47).concat(
   charCodeArray(58,64)
 ).concat(
