@@ -6,7 +6,7 @@ var generateBtn = document.querySelector("#generate");
 var lowerCaseCharCode = charCodeArray(97, 122);
 var upperCaseCharCode = charCodeArray(65, 90);
 var numericCharCode = charCodeArray(48, 57);
-var specialCharCode = charCodeArray(33, 47).concat(
+var specialCharCode = charCodeArray(32, 47).concat(
   charCodeArray(58,64)
 ).concat(
   charCodeArray(91,96)
@@ -20,11 +20,11 @@ generateBtn.addEventListener("click", writePassword);
 // Write password to the #password input
 function writePassword() {
 
-  //User prompts for password criteria. Create logic to only show next criteria if user inputs a valid option
+  //User prompts for password criteria. 
 
   var lowerCasePrompt = prompt("Do you want the password to include lowercase character\(s)\? Answer 'yes' or 'no.'");
   lowerCasePrompt = lowerCasePrompt.toLowerCase();
-  
+
   var upperCasePrompt = prompt("Do you want the password to include uppercase character\(s)\? Answer 'yes' or 'no.'");
   upperCasePrompt = upperCasePrompt.toLowerCase();
   
@@ -51,7 +51,7 @@ function writePassword() {
 };
 
 //Function to generate password
-
+//Include a character type if user selects it as a password criteria
 function generatePassword(lowerCasePrompt, upperCasePrompt, numericPrompt, specialPrompt, passwordLengthPrompt) {
   var passcode = [];
   if (lowerCasePrompt === "yes") passcode = passcode.concat(lowerCaseCharCode);
@@ -59,9 +59,12 @@ function generatePassword(lowerCasePrompt, upperCasePrompt, numericPrompt, speci
   if (numericPrompt === "yes") passcode = passcode.concat(numericCharCode);
   if (specialPrompt === "yes") passcode = passcode.concat(specialCharCode);
 
+
   var passcodeCharacters = [];
   for (var i = 0; i < passwordLengthPrompt; i++) {
+    //Generates random characters based on selected criteria. THe length of characters will be based on user input.
     var characterCode = passcode[Math.floor(Math.random() * passcode.length)]
+    //Convert unicode values into character
     passcodeCharacters.push(String.fromCharCode(characterCode))
   }
   return passcodeCharacters.join('')
